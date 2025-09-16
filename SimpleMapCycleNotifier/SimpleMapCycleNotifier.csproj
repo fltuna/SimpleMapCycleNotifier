@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <Target Name="CopyPlugin" AfterTargets="Build" Condition="'$(CS2_SERVER_DIR)' != ''">
+    <Message Text="Copying the plugin files to CounterStrikeSharp plugins directory" Importance="High" />
+    <Copy SourceFiles="$(TargetDir)$(ProjectName).dll" DestinationFolder="$(CS2_SERVER_DIR)\game\csgo\addons\counterstrikesharp\plugins\$(ProjectName)" />
+    <Message Text="Successfully copied the plugin files" Importance="High" />
+  </Target>
+
+  <ItemGroup>
+    <PackageReference Include="CounterStrikeSharp.API" Version="1.0.339" />
+    <PackageReference Include="Discord.Net" Version="3.18.0" />
+    <PackageReference Include="Discord.Net.Webhook" Version="3.18.0" />
+  </ItemGroup>
+
+</Project>
